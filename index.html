@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sublimação Colatina - Sistema de Gestão V1.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header simples -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Sublimação Colatina</h1>
+            <nav class="nav">
+                <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+                <button class="nav-btn" data-section="novo-pedido">Novo Pedido</button>
+                <button class="nav-btn" data-section="pedidos">Pedidos</button>
+                <button class="nav-btn" data-section="configuracoes">Configurações</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            
+            <!-- Dashboard -->
+            <section id="dashboard" class="section active">
+                <h2>Dashboard</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total de Pedidos</h3>
+                        <div class="stat-number" id="total-pedidos">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pedidos Pendentes</h3>
+                        <div class="stat-number" id="pedidos-pendentes">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pedidos Concluídos</h3>
+                        <div class="stat-number" id="pedidos-concluidos">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pedidos Hoje</h3>
+                        <div class="stat-number" id="pedidos-hoje">0</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Novo Pedido -->
+            <section id="novo-pedido" class="section">
+                <h2>Novo Pedido</h2>
+                <form id="form-pedido" class="form">
+                    <div class="form-group">
+                        <label for="cliente">Cliente:</label>
+                        <input type="text" id="cliente" name="cliente" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="produto">Produto:</label>
+                        <select id="produto" name="produto" required>
+                            <option value="">Selecione um produto</option>
+                            <option value="Painéis">Painéis</option>
+                            <option value="Tapetes">Tapetes</option>
+                            <option value="Totens">Totens</option>
+                            <option value="Cilindros">Cilindros</option>
+                            <option value="Almofadas">Almofadas</option>
+                            <option value="Bolsinhas">Bolsinhas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data-festa">Data da Festa:</label>
+                        <input type="date" id="data-festa" name="data-festa" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade" placeholder="Digite a cidade..." required>
+                        <div id="cidade-suggestions" class="suggestions"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modalidade">Modalidade de Entrega:</label>
+                        <select id="modalidade" name="modalidade" required>
+                            <option value="">Selecione a modalidade</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Prazo Limite para Aprovação:</label>
+                        <div id="prazo-limite" class="prazo-info">Selecione a cidade e modalidade</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observacoes">Observações:</label>
+                        <textarea id="observacoes" name="observacoes" rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Salvar Pedido</button>
+                </form>
+            </section>
+
+            <!-- Lista de Pedidos -->
+            <section id="pedidos" class="section">
+                <h2>Lista de Pedidos</h2>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Produto</th>
+                                <th>Data Festa</th>
+                                <th>Cidade</th>
+                                <th>Modalidade</th>
+                                <th>Prazo Limite</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pedidos-tbody">
+                            <!-- Pedidos serão inseridos aqui -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Configurações -->
+            <section id="configuracoes" class="section">
+                <h2>Configurações</h2>
+                <div class="config-section">
+                    <h3>Backup de Dados</h3>
+                    <div class="config-buttons">
+                        <button id="btn-backup" class="btn-secondary">Fazer Backup</button>
+                        <button id="btn-restaurar" class="btn-secondary">Restaurar Backup</button>
+                        <input type="file" id="file-backup" accept=".json" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3>Informações da Empresa</h3>
+                    <p><strong>Nome:</strong> Sublimação Colatina</p>
+                    <p><strong>Localização:</strong> Colatina - ES</p>
+                </div>
+
+                <div class="config-section">
+                    <h3>Prazos por Estado</h3>
+                    <ul class="prazo-list">
+                        <li>ES: 1 dia</li>
+                        <li>MG, RJ, SP: 2 dias</li>
+                        <li>BA, DF, GO, MT, MS, PR, SC, RS: 3 dias</li>
+                        <li>Outros estados: 4 dias</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
